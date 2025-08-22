@@ -126,15 +126,7 @@ docker volume create db-data
 
 # Run a database container
 # Not best practice tot include password here, just for demonstrate purpose
-docker run -d \
-  --name demo-db \
-  --network myapp-network \
-  -v db-data:/var/lib/postgresql/data \
-  -e POSTGRES_PASSWORD=mysecretpassword \
-  -e POSTGRES_USER=myuser \
-  -e POSTGRES_DB=mydb \
-  -p 5433:5432 \
-  postgres:13
+docker run -d --name demo-db --network myapp-network -v db-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=myuser -e POSTGRES_DB=mydb -p 5433:5432 postgres:13
 ```
 
 2. Build the web application container
@@ -146,18 +138,14 @@ docker build -t demo-app .
 
 3. Run the web application container
 
+Windows User
 ```bash
-docker run \
-  --name demo-app-container \
-  --network myapp-network \
-  -d \
-  -p 8080:3000 \
-  -v ./logs:/app/logs \
-  -e DB_USER=myuser \
-  -e DB_HOST=demo-db \
-  -e DB_NAME=mydb \
-  -e DB_PASSWORD=mysecretpassword \
-  demo-app
+docker run --name demo-app-container --network myapp-network -d -p 8080:3000 -v %cd%/logs:/app/logs -e DB_USER=myuser -e DB_HOST=demo-db -e DB_NAME=mydb -e DB_PASSWORD=mysecretpassword demo-app
+```
+
+Mac or WSL
+```bash
+docker run --name demo-app-container --network myapp-network -d -p 8080:3000 -v "$(pwd)/logs":/app/logs -e DB_USER=myuser -e DB_HOST=demo-db -e DB_NAME=mydb -e DB_PASSWORD=mysecretpassword demo-app
 ```
 
 4. Test the application
