@@ -1,5 +1,11 @@
 # Module 4 - Edric's Coaching Week 2
 
+Today's agenda
+- Microservices Architecture
+- Recap: Semantic Versioning
+- Recap: Docker
+- Hands On: docker-compose
+
 # Microservices Architecture: Key Components
 
 Microservices architecture breaks down applications into small, independent services that work together. Let's explore the essential components that make microservices work effectively.
@@ -94,6 +100,16 @@ SemVer also supports pre-release and build metadata:
 2. **Release 1.0.0** when your API is considered stable
 3. **Document all breaking changes** clearly in release notes
 4. **Don't modify released versions** - each release should be immutable
+
+# Docker Recap
+## Single Stage Build
+![Single Stage Build](single_stage_build.jpg)
+
+## Multi Stage Build
+![Multi Stage Build](multi-stage-build.jpg)
+
+## Docker Network
+![Docker Network](docker-network.jpg)
 
 ## Create multiple docker containers for a simple web application
 
